@@ -1,9 +1,13 @@
+import Board from "./board"
+
 export default class Game {
   isGameRunning = false
   clockTime = 0
   timer: NodeJS.Timeout
+  board: Board
 
-  constructor() {
+  constructor(board: Board = new Board(5)) {
+    this.board = board
     this.nextTick = this.nextTick.bind(this)
   }
 

@@ -13,8 +13,13 @@ document.getElementById('toggle-game-status').addEventListener('click', () => {
 
 function renderStartingBoard() {
   let board = ''
-  for (let i = 0; i < gameOfLife.board.size; i++) {
-    board = board + '<tr>' + '<td></td>'.repeat(gameOfLife.board.size) + '</tr>'
+  for (let i = 1; i <= gameOfLife.board.size; i++) {
+    let row = ''
+    for (let x = 1; x <= gameOfLife.board.size; x++) {
+      row = row + `<td class="${i}-${x}"></td>`
+    }
+
+    board = board + '<tr>' + row + '</tr>'
   }
   return board
 }

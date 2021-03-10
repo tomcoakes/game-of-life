@@ -1,4 +1,4 @@
-import Board from "./board"
+import Board from './board'
 
 export default class Game {
   isGameRunning = false

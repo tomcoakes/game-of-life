@@ -6,10 +6,10 @@ document.getElementById('game-status').innerText = 'Game is not active'
 
 document.getElementById('toggle-game-status').addEventListener('click', () => {
   gameOfLife.isGameRunning ? gameOfLife.stop() : gameOfLife.start()
-  updateGameStatus()
+  toggleGameStatus()
 })
 
-function updateGameStatus() {
+function toggleGameStatus() {
   if (gameOfLife.isGameRunning) {
     document.getElementById('game-status').innerText = 'Game is active'
   } else {

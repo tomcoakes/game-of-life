@@ -13,9 +13,9 @@ document.getElementById('toggle-game-status').addEventListener('click', () => {
 
 function renderStartingBoard() {
   let board = ''
-  for (let i = 1; i <= gameOfLife.board.size; i++) {
+  for (let i = 0; i < gameOfLife.board.size; i++) {
     let row = ''
-    for (let x = 1; x <= gameOfLife.board.size; x++) {
+    for (let x = 0; x < gameOfLife.board.size; x++) {
       row = row + `<td class="${i}-${x}"></td>`
     }
 

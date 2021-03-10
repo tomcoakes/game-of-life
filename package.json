@@ -1,0 +1,19 @@
+{
+  "name": "game-of-life",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit src/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "prettier": "^2.2.1"
+  }
+}

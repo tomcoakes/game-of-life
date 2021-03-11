@@ -1,8 +1,8 @@
-import Cell, { defaultCellLocation } from './cell'
+import Cell, { CellType } from './cell'
 
 export default class Board {
   size: number
-  cells: Cell[]
+  cells: CellType[]
 
   constructor(size: number, liveCells: number = 3) {
     this.size = size
@@ -15,13 +15,13 @@ export default class Board {
   }
 }
 
-export function generateCells(numSquared: number, liveCells: number): Cell[] {
-  let output: { alive: boolean; location: { x: number; y: number } }[] = []
+export function generateCells(numSquared: number, liveCells: number): CellType[] {
+  let output: CellType[] = []
   let temp: number[] = []
 
   for (let x = 0; x < numSquared; x++) {
     for (let y = 0; y < numSquared; y++) {
-      output.push({ alive: false, location: { x, y } })
+      output.push(new Cell(false, { x, y }))
     }
   }
 
@@ -29,7 +29,6 @@ export function generateCells(numSquared: number, liveCells: number): Cell[] {
     setCellToAlive(Math.floor(Math.random() * (output.length - 0) + 0))
   }
 
-  output.map((cell) => new Cell(cell.alive, cell.location))
   return output
 
   function setCellToAlive(randomNumber: number) {

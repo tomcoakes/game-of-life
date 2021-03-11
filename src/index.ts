@@ -17,7 +17,6 @@ document.getElementById('toggle-game-status').addEventListener('click', () => {
   toggleGameStatus()
   setInterval(() => {
     paintCells()
-    console.log(gameOfLife.clockTime)
     document.getElementById('game-time').innerText = gameOfLife.clockTime.toString()
   }, 1000)
 })

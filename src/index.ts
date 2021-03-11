@@ -2,7 +2,12 @@ import Game from './game'
 
 const gameOfLife = new Game()
 
+console.log('>>> board size: ', gameOfLife.board.size)
+console.log('>>> board cells: ', gameOfLife.board.cells)
+
 document.querySelector('table').innerHTML = renderStartingBoard()
+
+paintCells()
 
 document.getElementById('game-status').innerText = 'Game is not active'
 
@@ -22,6 +27,17 @@ function renderStartingBoard() {
     board = board + '<tr>' + row + '</tr>'
   }
   return board
+}
+
+function paintCells() {
+  gameOfLife.board.cells
+    .filter((cell) => cell.alive)
+    .forEach((cell) => {
+      const boardCell = document.getElementsByClassName(
+        `${cell.location.x}-${cell.location.y}`,
+      )[0]
+      boardCell.classList.add('live')
+    })
 }
 
 function toggleGameStatus() {

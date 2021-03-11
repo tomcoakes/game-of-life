@@ -11,7 +11,11 @@ export default class Board {
   }
 
   updateCells() {
-    this.cells = generateCells(this.size, 20)
+    return this.cells.map((cell) => {
+      cell.numberOfNeighbours = countNeighbours(this.cells, cell)
+      cell.updateStatus()
+      return cell
+    })
   }
 }
 
@@ -59,5 +63,5 @@ export function countNeighbours(allCells: CellType[], rootCell: CellType) {
     )
   })
 
-  return adjacentCells.filter(cell => cell.alive).length
+  return adjacentCells.filter((cell) => cell.alive).length
 }

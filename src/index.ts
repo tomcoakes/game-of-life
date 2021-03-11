@@ -1,7 +1,7 @@
 import Board from './board'
 import Game from './game'
 
-const gameOfLife = new Game(new Board(20, 20))
+const gameOfLife = new Game(new Board(20, 80))
 
 console.log('>>> board size: ', gameOfLife.board.size)
 console.log('>>> board cells: ', gameOfLife.board.cells)
@@ -16,6 +16,7 @@ document.getElementById('toggle-game-status').addEventListener('click', () => {
   gameOfLife.isGameRunning ? gameOfLife.stop() : gameOfLife.start()
   toggleGameStatus()
   setInterval(() => {
+    resetCells()
     paintCells()
     document.getElementById('game-time').innerText = gameOfLife.clockTime.toString()
   }, 1000)
@@ -42,6 +43,16 @@ function paintCells() {
         `${cell.location.x}-${cell.location.y}`,
       )[0]
       boardCell.classList.add('live')
+    })
+}
+
+function resetCells() {
+  gameOfLife.board.cells
+    .forEach((cell) => {
+      const boardCell = document.getElementsByClassName(
+        `${cell.location.x}-${cell.location.y}`,
+      )[0]
+      boardCell.classList.remove('live')
     })
 }
 

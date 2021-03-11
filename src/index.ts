@@ -15,7 +15,11 @@ document.getElementById('game-status').innerText = 'Game is not active'
 document.getElementById('toggle-game-status').addEventListener('click', () => {
   gameOfLife.isGameRunning ? gameOfLife.stop() : gameOfLife.start()
   toggleGameStatus()
-  setInterval(paintCells, 1000)
+  setInterval(() => {
+    paintCells()
+    console.log(gameOfLife.clockTime)
+    document.getElementById('game-time').innerText = gameOfLife.clockTime.toString()
+  }, 1000)
 })
 
 function renderStartingBoard() {

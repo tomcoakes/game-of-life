@@ -2,13 +2,17 @@ import Board from './board'
 
 export default class Game {
   isGameRunning = false
-  clockTime = 0
+  private _clockTime = 0
   timer: NodeJS.Timeout
   board: Board
 
   constructor(board: Board = new Board(5)) {
     this.board = board
     this.nextTick = this.nextTick.bind(this)
+  }
+
+  public get clockTime() {
+    return this._clockTime
   }
 
   start() {
@@ -22,8 +26,7 @@ export default class Game {
   }
 
   nextTick() {
-    this.clockTime = this.clockTime + 1
-    console.log('>>> new clock time: ', this.clockTime)
+    this._clockTime = this.clockTime + 1
     this.board.updateCells()
   }
 }

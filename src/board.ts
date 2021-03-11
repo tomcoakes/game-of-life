@@ -6,24 +6,33 @@ export default class Board {
 
   constructor(size: number, liveCells: number = 3) {
     this.size = size
-    this.cells = this.generateCells(size, liveCells)
+    this.cells = generateCells(size, liveCells)
+  }
+}
+
+export function generateCells(numSquared: number, liveCells: number): Cell[] {
+  let output: { alive: boolean; location: { x: number; y: number } }[] = []
+  let temp: number[] = []
+
+  for (let x = 0; x < numSquared; x++) {
+    for (let y = 0; y < numSquared; y++) {
+      output.push({ alive: false, location: { x, y } })
+    }
   }
 
-  generateCells(num: number, liveCells: number): Cell[] {
-    let output: { alive: boolean; location: { x: number; y: number } }[] = []
+  for (let i = 0; i < liveCells; i++) {
+    setCellToAlive(Math.floor(Math.random() * (output.length - 0) + 0))
+  }
 
-    for (let x = 0; x < num; x++) {
-      for (let y = 0; y < num; y++) {
-        output.push({ alive: false, location: { x, y } })
-      }
+  output.map((cell) => new Cell(cell.alive, cell.location))
+  return output
+
+  function setCellToAlive(randomNumber: number) {
+    if (!temp.includes(randomNumber)) {
+      temp.push(randomNumber)
+      output[randomNumber].alive = true
+    } else {
+      setCellToAlive(Math.floor(Math.random() * (output.length - 0) + 0))
     }
-
-    for (let i = 0; i < liveCells; i++) {
-      output[Math.floor(Math.random() * (output.length - 0) + 0)].alive = true
-      //@todo make sure that the same cell can't be made to be made live twice
-    }
-
-    output.map((cell) => new Cell(cell.alive, cell.location))
-    return output
   }
 }

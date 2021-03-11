@@ -30,6 +30,6 @@ export default class Cell {
     if (!this.alive && this._numberOfNeighbours === 3) {
       this.alive = true
     }
-    console.log('>>> cell: ', this)
+    // console.log('>>> cell: ', this)
   }
 }

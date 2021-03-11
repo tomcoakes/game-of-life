@@ -20,6 +20,13 @@ describe('Board', () => {
     expect(liveCells).toHaveLength(5)
   })
 
+  it('can update its cells', () => {
+    const newBoard = new Board(10, 5)
+    const cellsBeforeUpdate = newBoard.cells
+    newBoard.updateCells()
+    expect(newBoard.cells).not.toEqual(cellsBeforeUpdate)
+  })
+
   describe('generateCells', () => {
     it('always creates the correct amount of live cells', () => {
       expect(generateCells(10, 100).filter((cell) => cell.alive)).toHaveLength(100)

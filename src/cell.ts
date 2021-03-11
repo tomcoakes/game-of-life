@@ -16,14 +16,14 @@ export default class Cell {
     this.alive = alive
     this.location = location
     this._numberOfNeighbours = numberofNeighbours
+    this.updateStatus = this.updateStatus.bind(this)
   }
 
   public set numberOfNeighbours(value: number) {
     this._numberOfNeighbours = value
-    this.updateStatus()
   }
 
-  private updateStatus() {
+  updateStatus() {
     if (this.alive && (this._numberOfNeighbours < 2 || this._numberOfNeighbours > 3)) {
       this.alive = false
     }

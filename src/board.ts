@@ -26,17 +26,38 @@ export function generateCells(numSquared: number, liveCells: number): CellType[]
   }
 
   for (let i = 0; i < liveCells; i++) {
-    setCellToAlive(Math.floor(Math.random() * (output.length - 0) + 0))
+    bringCellToLife(Math.floor(Math.random() * (output.length - 0) + 0))
   }
+
+  output.map((cell) => {
+    cell.numberOfNeighbours = countNeighbours(output, cell)
+    return cell
+  })
 
   return output
 
-  function setCellToAlive(randomNumber: number) {
+  function bringCellToLife(randomNumber: number) {
     if (!temp.includes(randomNumber)) {
       temp.push(randomNumber)
       output[randomNumber].alive = true
     } else {
-      setCellToAlive(Math.floor(Math.random() * (output.length - 0) + 0))
+      bringCellToLife(Math.floor(Math.random() * (output.length - 0) + 0))
     }
   }
+}
+
+export function countNeighbours(allCells: CellType[], rootCell: CellType) {
+  const adjacentCells = allCells.filter((cell) => {
+    return (
+      (cell.location.x === rootCell.location.x ||
+        cell.location.x === rootCell.location.x - 1 ||
+        cell.location.x === rootCell.location.x + 1) &&
+      (cell.location.y === rootCell.location.y ||
+        cell.location.y === rootCell.location.y - 1 ||
+        cell.location.y === rootCell.location.y + 1) &&
+      cell.location !== rootCell.location
+    )
+  })
+
+  return adjacentCells.filter(cell => cell.alive).length
 }

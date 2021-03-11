@@ -18,6 +18,7 @@ describe('Cell', () => {
     ])('and has %s it dies', (_, neighbours) => {
       const newCell = new Cell(true, defaultCellLocation)
       newCell.numberOfNeighbours = neighbours
+      newCell.updateStatus()
       expect(newCell.alive).toBe(false)
     })
 
@@ -27,6 +28,7 @@ describe('Cell', () => {
     ])('and has %s it stays alive', (_, neighbours) => {
       const newCell = new Cell(true, defaultCellLocation)
       newCell.numberOfNeighbours = neighbours
+      newCell.updateStatus()
       expect(newCell.alive).toBe(true)
     })
 
@@ -39,6 +41,7 @@ describe('Cell', () => {
     ])('and has %s it dies', (_, neighbours) => {
       const newCell = new Cell(true, defaultCellLocation)
       newCell.numberOfNeighbours = neighbours
+      newCell.updateStatus()
       expect(newCell.alive).toBe(false)
     })
   })
@@ -56,12 +59,14 @@ describe('Cell', () => {
     ])('and has %s it stays dead', (_, neighbours) => {
       const newCell = new Cell(false, defaultCellLocation)
       newCell.numberOfNeighbours = neighbours
+      newCell.updateStatus()
       expect(newCell.alive).toBe(false)
     })
 
     it('and has three neighbours it comes to life', () => {
       const newCell = new Cell(false, defaultCellLocation)
       newCell.numberOfNeighbours = 3
+      newCell.updateStatus()
       expect(newCell.alive).toBe(true)
     })
   })

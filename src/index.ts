@@ -1,6 +1,7 @@
+import Board from './board'
 import Game from './game'
 
-const gameOfLife = new Game()
+const gameOfLife = new Game(new Board(20, 20))
 
 console.log('>>> board size: ', gameOfLife.board.size)
 console.log('>>> board cells: ', gameOfLife.board.cells)
@@ -14,6 +15,7 @@ document.getElementById('game-status').innerText = 'Game is not active'
 document.getElementById('toggle-game-status').addEventListener('click', () => {
   gameOfLife.isGameRunning ? gameOfLife.stop() : gameOfLife.start()
   toggleGameStatus()
+  setInterval(paintCells, 1000)
 })
 
 function renderStartingBoard() {

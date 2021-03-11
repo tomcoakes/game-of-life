@@ -24,5 +24,6 @@ export default class Game {
   nextTick() {
     this.clockTime = this.clockTime + 1
     console.log('>>> new clock time: ', this.clockTime)
+    this.board.updateCells()
   }
 }

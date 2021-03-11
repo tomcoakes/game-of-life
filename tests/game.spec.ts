@@ -54,4 +54,13 @@ describe('Game', () => {
     jest.advanceTimersByTime(3000)
     expect(newGame.clockTime).toEqual(3)
   })
+
+  it('updates the cells each time the clock ticks', () => {
+    const newBoard = new Board(10)
+    const spy = jest.spyOn(newBoard, 'updateCells')
+    const newGame = new Game(newBoard)
+    newGame.start()
+    jest.advanceTimersByTime(3000)
+    expect(spy).toHaveBeenCalled()
+  })
 })

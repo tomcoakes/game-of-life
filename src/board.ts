@@ -7,6 +7,11 @@ export default class Board {
   constructor(size: number, liveCells: number = 3) {
     this.size = size
     this.cells = generateCells(size, liveCells)
+    this.updateCells = this.updateCells.bind(this)
+  }
+
+  updateCells() {
+    this.cells = generateCells(this.size, 20)
   }
 }
 

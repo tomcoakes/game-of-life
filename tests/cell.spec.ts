@@ -1,8 +1,8 @@
-import Cell from '../src/cell'
+import Cell, { defaultCellLocation } from '../src/cell'
 
 describe('Cell', () => {
   it('is created with a live status', () => {
-    const newCell = new Cell(true)
+    const newCell = new Cell(true, defaultCellLocation)
     expect(newCell.alive).toEqual(true)
   })
 

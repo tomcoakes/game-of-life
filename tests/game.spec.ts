@@ -43,7 +43,7 @@ describe('Game', () => {
     const newGame = new Game()
     newGame.start()
     jest.advanceTimersByTime(3000)
-    expect(newGame.clockTime).toEqual(3)
+    expect(newGame.clockTime).toEqual(60)
   })
 
   it('stops the timer when the game stops', () => {
@@ -52,7 +52,7 @@ describe('Game', () => {
     jest.advanceTimersByTime(3000)
     newGame.stop()
     jest.advanceTimersByTime(3000)
-    expect(newGame.clockTime).toEqual(3)
+    expect(newGame.clockTime).toEqual(60)
   })
 
   it('updates the cells each time the clock ticks', () => {

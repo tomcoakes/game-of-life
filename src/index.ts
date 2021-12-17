@@ -19,7 +19,7 @@ document.getElementById('toggle-game-status').addEventListener('click', () => {
     resetCells()
     paintCells()
     document.getElementById('game-time').innerText = gameOfLife.clockTime.toString()
-  }, 500)
+  }, 50)
 })
 
 function renderStartingBoard() {

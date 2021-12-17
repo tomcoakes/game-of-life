@@ -17,7 +17,7 @@ export default class Game {
 
   start() {
     this.isGameRunning = true
-    this.timer = setInterval(this.nextTick, 500)
+    this.timer = setInterval(this.nextTick, 50)
   }
 
   stop() {

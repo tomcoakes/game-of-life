@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2016",
+    "target": "ES5",
     "jsx": "preserve",
     "strictFunctionTypes": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "node"
   },
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*"
-  ]
+  "exclude": ["node_modules", "**/node_modules/*", "tests"]
 }
